@@ -1,0 +1,30 @@
+
+html, body{
+    height:100%;
+    background-color:skyblue;
+    min-height : 100%;
+    min-width : 100%;
+    background-size:100% 100%;
+    overflow-y:auto;
+}
+
+#cont{
+    background-color: skyblue;
+}
+h1{
+    font-family: 'Indie Flower';
+    color:blue;
+}
+
+h3, span{
+    font-family: 'Hind Madurai', sans-serif;
+    font-size:35px;
+}
+
+p1{
+    font-family: 'Nanum Myeongjo', serif;
+    font-size:35px;
+
+}
+
+
