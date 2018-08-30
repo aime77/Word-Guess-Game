@@ -6,14 +6,11 @@ var lives_ID = document.getElementById("lives");
 var wordPH_ID = document.getElementById("wordPH");
 var newRound_ID = document.getElementById("newRound");
 var incorrectL_ID = document.getElementById("incorrectL");
-var sound;
+var sound = new Audio(".\assets\sounds\music.mp3");
 
-function preload(){
-    sound=loadSound("assets\sounds\b-groundmusic.mp3");
-}
 
 var game = {
-    wordList: ["galaxy", "stars", "black hole", "dark energy", "planet", "nebula", "quasars", "gravity", "dark matter", "comets", "white dwarfs", "supernovas"],
+    wordList: ["galaxy", "stars", "black-hole", "dark-energy", "planet", "nebula", "quasars", "gravity", "dark-matter", "comets", "white-dwarfs", "supernovas"],
     guide: "",
     chosenWord: "",
     wordPH: [],
@@ -24,8 +21,10 @@ var game = {
     incorrectL: [],
     tries: [],
     
+    
     //function to start game
     newRound: function () {
+       
         this.lives = 10;
         this.active = true;
         this.incorrectL = [];
@@ -37,7 +36,7 @@ var game = {
         
     for (var i = 0; i < this.chosenWord.length; i++) {
             if (this.chosenWord[i] === ' ') {
-                this.wordPH.push('  ');
+                this.wordPH.push(' ');
             }
             else {
                 this.wordPH.push('_');
@@ -68,12 +67,12 @@ var game = {
             }
             
             else if(this.chosenWord==="dark energy"){
-            this.guide="It's an unknown form of energy which is hypothesized to permeate all of space, tending to accelerate the expansion of the universe.   ";
+            this.guide="It's an unknown form of energy which is hypothesized to permeate all of space, tending to accelerate the expansion of the universe.";
             guide_ID.textContent=this.guide;
             }
              
             else if(this.chosenWord==="planet"){
-            this.guide="A large, round object in space that moves around a star";
+            this.guide="A large, round object in space that moves around a star.";
             guide_ID.textContent=this.guide;
             }
             
@@ -188,9 +187,11 @@ var game = {
 newRound_ID.addEventListener('click', function() {game.newRound()});
 //eventful event
 document.onkeyup = function (event) {
-    if (event.keyCode > 64 && event.keyCode < 91) {
+    if (event.keyCode > 50 && event.keyCode < 220) {
         game.guessLetter(event.key);
+        sound.play();
     }
+    
 
 };
 
