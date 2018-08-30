@@ -6,7 +6,11 @@ var lives_ID = document.getElementById("lives");
 var wordPH_ID = document.getElementById("wordPH");
 var newRound_ID = document.getElementById("newRound");
 var incorrectL_ID = document.getElementById("incorrectL");
+var sound;
 
+function preload(){
+    sound=loadSound("assets\sounds\b-groundmusic.mp3");
+}
 
 var game = {
     wordList: ["galaxy", "stars", "black hole", "dark energy", "planet", "nebula", "quasars", "gravity", "dark matter", "comets", "white dwarfs", "supernovas"],
@@ -19,6 +23,7 @@ var game = {
     active: false,
     incorrectL: [],
     tries: [],
+    
     //function to start game
     newRound: function () {
         this.lives = 10;
@@ -46,6 +51,7 @@ var game = {
         wordPH_ID.textContent = this.wordPH.join(' ');
         incorrectL_ID.textContent = this.incorrectL;
 
+        //when a word gets chosen, the respective text appears to guide the user into a possible answer
         if (this.chosenWord==="galaxy"){
             this.guide="A galaxy is a gravitationally bound system of stars, stellar remnants, interstellar gas, dust, and dark matter. ";
             guide_ID.textContent=this.guide;
@@ -145,6 +151,7 @@ var game = {
         if (this.chosenWord.toUpperCase() === this.wordPH.join('').toUpperCase() || this.chosenWord.toLowerCase() === this.wordPH.join('').toLowerCase()) {
             this.wins+=1;
             this.active = false;
+            this.sound=true;
             wins_ID.textContent = this.wins;
         }
     },
